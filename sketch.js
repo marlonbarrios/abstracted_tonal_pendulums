@@ -91,7 +91,7 @@ function initializeAudio() {
   mixer = new Tone.Gain();
 
   let reverb = new Tone.Reverb({
-    wet: 0.5, // half dry, half wet mix
+    wet: 0.6, // half dry, half wet mix
     decay: 30 // decay time in seconds
   });
 
