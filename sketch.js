@@ -66,7 +66,8 @@ fill(255)
     fill(255);
     noStroke();
     textAlign(CENTER, CENTER);
-    text("CLICK TO START", width / 2, height / 2);
+    text("CLICK TO START headphones are suggested", width / 2, height / 2);
+    text("Headphones are Suggested", width / 2, height / 2 +20);
   }
 }
 
