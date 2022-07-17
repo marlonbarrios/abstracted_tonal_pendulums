@@ -1,11 +1,21 @@
-// Inspired by
-// Memo Atken's Simple Harmonic Motion series
-//Inspired by David Bouchard's Pendulum series
+// // ABSTACTED TONAL PENDULUMS
+// Programed by Marlon Barrios Solano
+// p5.js, tonal.js, tone.js
+
+
+// // Memo Atken's Simple Harmonic Motion series
+
+
+// // I generated a musical composition based on a series of oscillating pendulums. This work is inspired by Memo Akten's Simple Harmonic Motion series (https://www.seditionart.com/memo-akten/collection/simple-harmonic-motion. It demonstrates how the interactions between simple objects (the pendulums) can produce complex behaviors. 
+// Pendulums are driven using low frequency oscillators  with a ramdom noise offset from the CENTER. The waves  go in and out of phase  creating complex patterns.  When the pendulum hits the  0 point or the center of the x axis it plucks a note from concatenated musical scales.
+// When the app is started it randonly selects from these 4 scale types: 'major', 'minor', 'major pentatonic', 'minor pentatonic'.
+// The number of pendulums is based in number of the selected scale type times 3; a max of 21 pendulums and notes.
+//A red column fashes everytime a note is pressed
+//  Thanks to   David Bouchard's amazing Pendulum series.
 
 
 let masterVolume = -9; // in decibel.
 let ready = false;
-
 let pendulums = [];//to make many pendulums
 let mixer;
 let scale;
@@ -31,18 +41,6 @@ function windowResized() {
 // Main render loop
 function draw() {
   background(0);
-
-
-//   fill(150);
-//   noStroke();
-  
-
-
-// rect(width/4, 0, 10, height)
-
-// rect(width- width/4, 0, 10, height)
-
-
 
 
  
@@ -167,9 +165,12 @@ class Pendulum {
       // || ---> OR
       // trigger a note
       this.synth.triggerAttackRelease(this.note, "8n");
+  
+      stroke('red');
+     
       fill('red');
-      noStroke();
-      
+
+     
     rect(width/2-15, 0, 30, height )
     
     }
@@ -181,7 +182,7 @@ class Pendulum {
     fill(255);
     stroke(255);
     strokeWeight(2);
-    // line(x, 50, width / 2, 0);
+   
     ellipse(x, 50, 25, 25);
 
   }
