@@ -14,6 +14,10 @@
 //The notes are writen in the lower center of the screen.
 //The app is responsive  to the browser size.
 //  Thanks to   David Bouchard's amazing Pendulum series.
+// https://marlonbarrios.github.io/abstracted_tonal_pendulums/
+
+
+
 
 
 let masterVolume = -9; // in decibel.
@@ -66,7 +70,7 @@ fill(255)
     fill(255);
     noStroke();
     textAlign(CENTER, CENTER);
-    text("CLICK TO START headphones are suggested", width / 2, height / 2);
+    text("CLICK TO START", width / 2, height / 2);
     text("Headphones are Suggested", width / 2, height / 2 +20);
   }
 }
