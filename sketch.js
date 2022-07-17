@@ -1,24 +1,30 @@
-// // ABSTACTED TONAL PENDULUMS
+// ABSTRACTED TONAL PENDULUMS
+
 // Programed by Marlon Barrios Solano
+
 // p5.js, tonal.js, tone.js
 
+//  I generated a musical composition based on a series of oscillating pendulums. This work is inspired by Memo Akten's Simple Harmonic Motion series (https://lnkd.in/eseZ8GzX. It demonstrates how the interactions between simple objects (the pendulums) can produce complex behaviors. 
 
-// // Memo Atken's Simple Harmonic Motion series
+// Pendulums are driven using low frequency oscillators  with a random noise offset from the CENTER. The waves  go in and out of phase  creating complex patterns.  When the pendulum hits the  0 point or the center of the x axis it plucks a note from concatenated musical scales.
 
+// When the app is started it randomly selects from these 4 scale types: 'major', 'minor', 'major pentatonic', 'minor pentatonic'.
 
-// // I generated a musical composition based on a series of oscillating pendulums. This work is inspired by Memo Akten's Simple Harmonic Motion series (https://www.seditionart.com/memo-akten/collection/simple-harmonic-motion. It demonstrates how the interactions between simple objects (the pendulums) can produce complex behaviors. 
-// Pendulums are driven using low frequency oscillators  with a ramdom noise offset from the CENTER. The waves  go in and out of phase  creating complex patterns.  When the pendulum hits the  0 point or the center of the x axis it plucks a note from concatenated musical scales.
-// When the app is started it randonly selects from these 4 scale types: 'major', 'minor', 'major pentatonic', 'minor pentatonic'.
 // The number of pendulums is based in number of the selected scale type times 3; a min of 15 and a max of 21 pendulums and notes.
-//A red column fashes everytime a note is plucked.
-//The notes are writen in the lower center of the screen.
-//The app is responsive  to the browser size.
-//  Thanks to   David Bouchard's amazing Pendulum series.
-// https://marlonbarrios.github.io/abstracted_tonal_pendulums/
 
+// A red column flashes every-time a note is plucked.
 
+// The notes played are written in the lower center of the screen.
 
+// The app is responsive  to the browser size.
 
+// Thanks to   David Bouchard's amazing Pendulum series.
+
+// Live App here:
+
+// https://lnkd.in/emPnMp8N
+
+// #p5 #generativeart #generativesound #tonejs #tonaljs
 
 let masterVolume = -9; // in decibel.
 let ready = false;
