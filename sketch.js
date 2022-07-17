@@ -9,8 +9,10 @@
 // // I generated a musical composition based on a series of oscillating pendulums. This work is inspired by Memo Akten's Simple Harmonic Motion series (https://www.seditionart.com/memo-akten/collection/simple-harmonic-motion. It demonstrates how the interactions between simple objects (the pendulums) can produce complex behaviors. 
 // Pendulums are driven using low frequency oscillators  with a ramdom noise offset from the CENTER. The waves  go in and out of phase  creating complex patterns.  When the pendulum hits the  0 point or the center of the x axis it plucks a note from concatenated musical scales.
 // When the app is started it randonly selects from these 4 scale types: 'major', 'minor', 'major pentatonic', 'minor pentatonic'.
-// The number of pendulums is based in number of the selected scale type times 3; a max of 21 pendulums and notes.
-//A red column fashes everytime a note is pressed
+// The number of pendulums is based in number of the selected scale type times 3; a min of 15 and a max of 21 pendulums and notes.
+//A red column fashes everytime a note is plucked.
+//The notes are writen in the lower center of the screen.
+//The app is responsive  to the browser size.
 //  Thanks to   David Bouchard's amazing Pendulum series.
 
 
