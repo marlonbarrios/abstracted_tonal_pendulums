@@ -8,13 +8,13 @@
 
 // Pendulums are driven using low frequency oscillators  with a random noise offset from the CENTER. The waves  go in and out of phase  creating complex patterns.  When the pendulum hits the  0 point or the center of the x axis it plucks a note from concatenated musical scales.
 
-// When the app is started it randomly selects from these 4 scale types: 'major', 'minor', 'major pentatonic', 'minor pentatonic'.
+// When the app is started it randomly selects from these 7 scale types: 'major', 'minor', 'major pentatonic', 'minor pentatonic', 'egyptian', 'malkos raga', 'ritusen'.
 
 // The number of pendulums is based in number of the selected scale type times 3; a min of 15 and a max of 21 pendulums and notes.
 
-// A red column flashes every-time a note is plucked.
+// A white circles  flashes every-time a note is plucked.
 
-// The notes played are written in the lower center of the screen.
+// The respective notes played are written in the pendulum rows left and right creating a visusl reprsentation of the scale.
 
 // The app is responsive  to the browser size.
 
@@ -32,14 +32,14 @@ let pendulums = [];//to make many pendulums
 let mixer;
 let scale;
 let flavor;
-let flavors = ['major', 'minor', 'major pentatonic', 'minor pentatonic']
+
+let flavors = ['major', 'minor', 'major pentatonic', 'minor pentatonic', 'egyptian', 'malkos raga', 'ritusen'];
 
 
 //------------------------------------------------------------
 // Create a new canvas to match the browser size
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
 
 }
 
@@ -55,17 +55,16 @@ function draw() {
   background(0);
 
 
- 
+
+
   if (ready) {
    
    // let pos = 0.5 - this.meter.getValue(0); //
 fill(255)
 
   
-    text( scale ,width/2, height  - 20);
-   
- 
- 
+text([flavor], width/2-300, height  - 20);
+
 
       for (let p of pendulums) {
       p.run();
@@ -86,10 +85,13 @@ function mousePressed() {
   if (!ready) {
     initializeAudio();
     ready = true;
+
+    
   }  else
 if (ready) {
     initializeAudio();
     ready = false;
+
   }
     
   }
@@ -124,17 +126,18 @@ function initializeAudio() {
   // names
 
   let flavor = random(flavors);
+  console.log([flavor]);
  
   scale = Tonal.Scale.get("C3 " + flavor).notes;
   scale = scale.concat(Tonal.Scale.get("C4 " + flavor).notes);
   scale = scale.concat(Tonal.Scale.get("C5 " + flavor).notes);
 
   // optional but fun: shuffle the scale array to mixup the notes
-  //Tonal.Collection.shuffle(scale);
+
 
   // create as many pendulums as we have notes in the scale[] array
   for (let i = 0; i < scale.length; i++) {
-    pendulums[i] = new Pendulum(0.85 + i * (1 / 60), scale[i]);
+    pendulums[i] = new Pendulum(noise(100 + frameCount) + i * (1 / 60), scale[i]);
   }
  
 }
@@ -179,24 +182,39 @@ class Pendulum {
       // trigger a note
       this.synth.triggerAttackRelease(this.note, "8n");
   
-      stroke('red');
-     
-      fill('red');
-
-     
-    rect(width/2-15, 0, 30, height )
     
+     
+    //  fill("white")
+fill('white')
+     stroke('white');
+     strokeWeight(1);
+    ellipseMode(CENTER)
+    ellipse(width/2, 50, 50, 50 )
+
+noFill();
+    stroke('white');
+    strokeWeight(2);
+   ellipseMode(CENTER)
+   ellipse(width/2, 50, 90, 90 )
+
+
     }
     this.prevPos = pos;
 
     // drawing code --> this could go in a separate function if we
     // wanted to, but I didn't bother in this case.
 
-    fill(255);
-    stroke(255);
-    strokeWeight(2);
-   
+    // fill(255);
+
+    textSize(15)
+    textAlign(CENTER, CENTER);
+    fill('white');
+    text(this.note, width/15, 50)
+    text(this.note, 14/15 * width, 50)
+    fill('red');
+  noStroke();
     ellipse(x, 50, 25, 25);
+    
 
   }
   }
