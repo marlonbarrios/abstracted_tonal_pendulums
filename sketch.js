@@ -191,11 +191,18 @@ class Pendulum {
     ellipseMode(CENTER)
     ellipse(width/2, 50, 50, 50 )
 
+    textSize(20)
+    textAlign(CENTER, CENTER);
+    fill('white');
+    text(this.note, width/15, 50)
+
 noFill();
     stroke('white');
     strokeWeight(2);
    ellipseMode(CENTER)
    ellipse(width/2, 50, 90, 90 )
+
+  
 
 
     }
@@ -208,11 +215,11 @@ noFill();
 
     textSize(15)
     textAlign(CENTER, CENTER);
-    fill('white');
+    fill(80);
     text(this.note, width/15, 50)
     text(this.note, 14/15 * width, 50)
     fill('red');
-  noStroke();
+    noStroke();
     ellipse(x, 50, 25, 25);
     
 
