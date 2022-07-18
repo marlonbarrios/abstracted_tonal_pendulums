@@ -1,4 +1,4 @@
-// ABSTRACTED TONAL PENDULUMS
+// ABSTRACTED TONAL PENDULUMS (v2)
 
 // Programed by Marlon Barrios Solano
 
@@ -185,7 +185,7 @@ class Pendulum {
     
      
     //  fill("white")
-fill('white')
+    fill('red')
      stroke('white');
      strokeWeight(1);
     ellipseMode(CENTER)
