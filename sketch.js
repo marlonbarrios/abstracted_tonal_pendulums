@@ -143,7 +143,7 @@ function initializeAudio() {
 
   // optional but fun: shuffle the scale array to mixup the notes
 
-  Tonal.Collection.shuffle(scale);
+  // Tonal.Collection.shuffle(scale);
  
   // create as many pendulums as we have notes in the scale[] array
   for (let i = 0; i < scale.length; i++) {
@@ -233,11 +233,11 @@ noFill();
     text(this.note, 14/15 * width, 50)
   
     fill(207, 18, 89);
-    noStroke();
-    line(width/2, 0, x, 50)
+    stroke(200);
+    line( x , height, x, 50)
+    noStroke(0)
     ellipse(x, 50, 25, 25);
-    
-
+  
   }
   }
 
