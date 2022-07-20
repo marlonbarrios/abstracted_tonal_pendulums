@@ -45,10 +45,7 @@ let flavors = ['major', 'minor', 'major pentatonic', 'minor pentatonic', 'egypti
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  gui = new dat.GUI();
-  gui.add(settings, "shuffleNotes", true, false);
-  
-  gui.close(); // start the sketch with the GUI closed 
+
 
 }
 
@@ -95,7 +92,7 @@ function mousePressed() {
   if (!ready) {
     initializeAudio();
     ready = true;
-    settings.shuffle = false;
+ 
 
     
   }  else
@@ -146,9 +143,7 @@ function initializeAudio() {
 
   // optional but fun: shuffle the scale array to mixup the notes
 
-  if (settings.shuffle == true) {
-    shuffleScales();
-  }
+  Tonal.Collection.shuffle(scale);
  
   // create as many pendulums as we have notes in the scale[] array
   for (let i = 0; i < scale.length; i++) {
@@ -157,9 +152,9 @@ function initializeAudio() {
 
 }
 
-function shuffleScales() {
-  Tonal.Collection.shuffle(scale);
-}
+
+
+
 
 
 //------------------------------------------------------------
