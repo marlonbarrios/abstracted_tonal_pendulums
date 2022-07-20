@@ -33,6 +33,10 @@ let mixer;
 let scale;
 let flavor;
 
+let settings = {
+  shuffleNotes: false,
+}
+
 let flavors = ['major', 'minor', 'major pentatonic', 'minor pentatonic', 'egyptian', 'malkos raga', 'ritusen'];
 
 
@@ -40,6 +44,11 @@ let flavors = ['major', 'minor', 'major pentatonic', 'minor pentatonic', 'egypti
 // Create a new canvas to match the browser size
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  gui = new dat.GUI();
+  gui.add(settings, "shuffleNotes", true, false);
+  
+  gui.close(); // start the sketch with the GUI closed 
 
 }
 
@@ -52,7 +61,8 @@ function windowResized() {
 //------------------------------------------------------------
 // Main render loop
 function draw() {
-  background(0);
+  background(64, 78, 92);
+
 
 
 
@@ -85,12 +95,14 @@ function mousePressed() {
   if (!ready) {
     initializeAudio();
     ready = true;
+    settings.shuffle = false;
 
     
   }  else
 if (ready) {
     initializeAudio();
     ready = false;
+    settings.shuffle = false;
 
   }
     
@@ -134,13 +146,21 @@ function initializeAudio() {
 
   // optional but fun: shuffle the scale array to mixup the notes
 
-
+  if (settings.shuffle == true) {
+    shuffleScales();
+  }
+ 
   // create as many pendulums as we have notes in the scale[] array
   for (let i = 0; i < scale.length; i++) {
     pendulums[i] = new Pendulum(noise(100 + frameCount) + i * (1 / 60), scale[i]);
   }
- 
+
 }
+
+function shuffleScales() {
+  Tonal.Collection.shuffle(scale);
+}
+
 
 //------------------------------------------------------------
 class Pendulum {
@@ -185,9 +205,10 @@ class Pendulum {
     
      
     //  fill("white")
-    fill('red')
-     stroke('white');
-     strokeWeight(1);
+    fill('white')
+  
+     strokeWeight(3);
+     stroke('white')
     ellipseMode(CENTER)
     ellipse(width/2, 50, 50, 50 )
 
@@ -198,12 +219,9 @@ class Pendulum {
 
 noFill();
     stroke('white');
-    strokeWeight(2);
+    strokeWeight(3);
    ellipseMode(CENTER)
    ellipse(width/2, 50, 90, 90 )
-
-  
-
 
     }
     this.prevPos = pos;
@@ -215,11 +233,13 @@ noFill();
 
     textSize(15)
     textAlign(CENTER, CENTER);
-    fill(80);
+    fill(217, 202, 179);
     text(this.note, width/15, 50)
     text(this.note, 14/15 * width, 50)
-    fill('red');
+  
+    fill(207, 18, 89);
     noStroke();
+    line(width/2, 0, x, 50)
     ellipse(x, 50, 25, 25);
     
 
